@@ -6,8 +6,14 @@ import java.io.*;
 class gpmain
 {
 
+
+
+
+
+
 public static void main (String [] args) throws IOException
 {
+  memo Memo = new memo();
   //scanning and reading from file and placing it into arraylists
   ArrayList<String> file1A = new ArrayList<String>();
   ArrayList<String> file2A = new ArrayList<String>();
@@ -37,55 +43,12 @@ public static void main (String [] args) throws IOException
   System.out.println("\nFile 2 contains:");
   for (int i = 0; i < file2A.size(); i++)
     System.out.println(file2A.get(i));
-  
-  //displaying common elements 
-  //not sure if we're supposed to be using the Algorithm to be doing this part or if this is okay - lmk
-  System.out.println("\nCommon Elements are:");
-  ArrayList<String> common = new ArrayList<String>(file1A);
-  common.retainAll(file2A);
-  for (int i = 0; i < common.size(); i++)
-    System.out.println(common.get(i));
     
-  //displaying frequency1
-  //not sure if we're supposed to be using the Algorithm to be doing this part or if this is okay - lmk
-  System.out.println("\nFile 1 Frequency:");
-  boolean isCommon = false;
-  for (int i = 0; i < file1A.size(); i++)
-  {
-    for (int j = 0; j < common.size(); j++)
-    {
-      if (file1A.get(i).equals(common.get(j)))
-      {
-        System.out.println(file1A.get(i) + " is in both files");
-        isCommon = true;
-      }
-    }
-    if(isCommon == false)
-    {
-      System.out.println(file1A.get(i) + " is only in file 1");
-    }
-    isCommon = false;
-  }
+    
+  int value = Memo.memoTable(file1A,file2A);
+  System.out.println("Longest Substring amount: " + value);
   
-  //displaying frequency2
-  System.out.println("\nFile 2 Frequency:");
-  boolean isCommon2 = false;
-  for (int i = 0; i < file2A.size(); i++)
-  {
-    for (int j = 0; j < common.size(); j++)
-    {
-      if (file2A.get(i).equals(common.get(j)))
-      {
-        System.out.println(file2A.get(i) + " is in both files");
-        isCommon2 = true;
-      }
-    }
-    if(isCommon2 == false)
-    {
-      System.out.println(file2A.get(i) + " is only in file 2");
-    }
-    isCommon2 = false;
-  }
+  
     
     
     
