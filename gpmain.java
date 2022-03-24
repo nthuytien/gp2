@@ -45,10 +45,53 @@ public static void main (String [] args) throws IOException
     System.out.println(file2A.get(i));
     
     
-  int value = Memo.memoTable(file1A,file2A);
-  System.out.println("Longest Substring amount: " + value);
+  //running the memo table and outputting the longest common substring
+  ArrayList termsInCommon = Memo.memoTable(file1A,file2A);
+  System.out.println("\nFiles in common contains "+ termsInCommon.size() + " lines");
+  for (int i = termsInCommon.size()-1; i >= 0; i--)
+    System.out.println(termsInCommon.get(i));
   
   
+    //displaying frequency1
+  
+  System.out.println("\nFile 1 Frequency:");
+  boolean isCommon = false;
+  for (int i = 0; i < file1A.size(); i++)
+  {
+    for (int j = 0; j < termsInCommon.size(); j++)
+    {
+      if (file1A.get(i).equals(termsInCommon.get(j)))
+      {
+        System.out.println(file1A.get(i) + " is in both files");
+        isCommon = true;
+      }
+    }
+    if(isCommon == false)
+    {
+      System.out.println(file1A.get(i) + " is only in file 1");
+    }
+    isCommon = false;
+  }
+  
+  //displaying frequency2
+  System.out.println("\nFile 2 Frequency:");
+  boolean isCommon2 = false;
+  for (int i = 0; i < file2A.size(); i++)
+  {
+    for (int j = 0; j < termsInCommon.size(); j++)
+    {
+      if (file2A.get(i).equals(termsInCommon.get(j)))
+      {
+        System.out.println(file2A.get(i) + " is in both files");
+        isCommon2 = true;
+      }
+    }
+    if(isCommon2 == false)
+    {
+      System.out.println(file2A.get(i) + " is only in file 2");
+    }
+    isCommon2 = false;
+  }
     
     
     

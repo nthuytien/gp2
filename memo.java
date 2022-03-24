@@ -19,7 +19,7 @@ class memo
   }
 
 
-  public int memoTable(ArrayList file1A, ArrayList file2A)
+  public ArrayList<String> memoTable(ArrayList file1A, ArrayList file2A)
   {
     int rows = file1A.size()+1;
     int columns = file2A.size()+1;
@@ -39,6 +39,7 @@ class memo
         {
           table[i][j].value = table[i-1][j-1].value + 1;
           table[i][j].diagonal = true;
+          //System.out.println("Added " + file1A.get(i-1) + " " + i + " " + j);
         }
         else
         {
@@ -49,11 +50,51 @@ class memo
             table[i][j].above = true;
           else
             table[i][j].left = true;
-        }
+         }
+       }
+     }
+    
+    ArrayList<String> termsInCommon = new ArrayList<String>();
+    boolean finished = false;
+    int rows2 = rows-1;
+    int columns2 = columns-1;
+    String term;
+    while(finished == false)
+    {
+
+      if(table[rows2][columns2].diagonal == true)
+      {
+        term = (String)file1A.get(rows2-1);
+        //System.out.println("Added2 " + file1A.get(i-1) + " " + i + " " + j);
+        termsInCommon.add(term);
+        rows2--;
+        columns2--;
       }
+      else if(table[rows2][columns2].left == true)
+      {
+        columns2--;
+      }
+      else if(table[rows2][columns2].above == true)
+      {
+        rows2--;
+      }
+      else
+        finished = true;
+      
     }
-    return table[rows-1][columns-1].value;
-  }
+    return termsInCommon;
+    
+    
+ }   
+}    
+    
+    //return table;
+  
+  
+
+    //return table[rows-1][columns-1].value; <-- number of common terms
+  
+ 
   
   //retrieval method
   //if diagonal == true, then add the value of file1A[i] to the array
@@ -61,9 +102,7 @@ class memo
   //if either of those are true, go in that direction, then check to see if diagonal is true again
   //loop till finished
   
-  
-  
-}
+
 
 
 
