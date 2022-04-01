@@ -1,5 +1,7 @@
 // Emily Bui and Joe Luhrman
 // CS 462 Group Project
+// We believe that the running time of the algorithm is O(ab) where a and b are the number of lines in either file respectively, 
+// similar to the running time of the other memoization table algorithms we've looked at
 
 import java.util.*;
 import java.io.*;
