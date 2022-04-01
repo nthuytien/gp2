@@ -1,3 +1,6 @@
+// Emily Bui and Joe Luhrman
+// CS 462 Group Project
+
 import java.util.*;
 import java.io.*;
 

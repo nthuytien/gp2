@@ -1,3 +1,6 @@
+// Emily Bui and Joe Luhrman
+// CS 462 Group Project
+
 import java.util.*;
 import java.io.*;
 
@@ -6,7 +9,7 @@ import java.io.*;
 class memo
 {
   public int value;
- 	public boolean left;
+  public boolean left;
   public boolean diagonal;
   public boolean above;
 
@@ -18,7 +21,12 @@ class memo
     this.above = false;
   }
 
-
+  /**
+   * Creates the memoization table and retrieves result
+   * @param file1A the first file's contents
+   * @param file2A the second file's contents
+   * @return maximum number of common lines
+   */
   public ArrayList<String> memoTable(ArrayList file1A, ArrayList file2A)
   {
     int rows = file1A.size()+1;
