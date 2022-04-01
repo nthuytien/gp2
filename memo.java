@@ -66,8 +66,11 @@ class memo
       {
         term = (String)file1A.get(rows2-1);
         //System.out.println("Added2 " + file1A.get(i-1) + " " + i + " " + j);
-        termsInCommon.add(term);
-        rows2--;
+        
+	if (!(termsInCommon.contains(term)))
+	  termsInCommon.add(term);
+        
+	rows2--;
         columns2--;
       }
       else if(table[rows2][columns2].left == true)
